@@ -1,2 +1,19 @@
 ---
 # tasks file for ansible-setup
+- name: Install dirmngr
+  apt:
+    name: dirmngr
+    state: present
+  become: true
+
+- name: Add ansible repository
+  apt_repository:
+    repo: 'ppa:ansible/ansible'
+    update_cache: true
+  become: true
+
+- name: Set up Ansible on Ubuntu
+  apt:
+    name: ansible
+    state: present
+  become: true
